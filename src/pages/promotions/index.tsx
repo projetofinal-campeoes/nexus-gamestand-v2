@@ -22,8 +22,8 @@ const Promotions = ({ promotions }) => {
         <RightSide>
           <HeaderDashboard title="Promotions" />
 
-          <main>
-            <ul className="grid grid-cols-3 gap-4 h-[600px] overflow-y-auto">
+          <main className="h-[90%]">
+            <ul className="grid grid-cols-3 gap-4 h-[100%] overflow-y-auto">
                 {
                     promotions.map(promotion => (
                         <PromotionCard promotion={promotion} key={promotion.id}/>
@@ -39,7 +39,7 @@ const Promotions = ({ promotions }) => {
 
 export default Promotions;
 
-export const getStaticProps = async ({req, res}) => {
+export const getServerSideProps = async ({req, res}) => {
     const token = getCookie("token", { req, res });
 
     const response = await axios.get('https://nexus-gamestand-api.herokuapp.com/promotions', {
@@ -51,7 +51,6 @@ export const getStaticProps = async ({req, res}) => {
     return {
         props: {
             promotions: response.data
-        },
-        revalidate: 10
+        }
     }
 }
