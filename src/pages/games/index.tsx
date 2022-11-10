@@ -14,25 +14,11 @@ import ModalAdd from "../../components/ModalAdd";
 import api from "../../services/api";
 import { errorToast, successToast } from "../../services/toast";
 import { useRouter } from "next/router";
+import { useNexus } from "../../context/NexusContext";
 
 const CustomGames = ({ games }: IGames) => {
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-
+  const { openModalAddGames, setOpenModalAddGames, handleDeleteGame } = useNexus()
   
-  const handleDeleteGame = async (id:string) => {
-    try {
-      console.log(id)
-      await api.delete(`/custom_games/${id}`)
-      successToast('Game deleted!', 1000)
-    } catch (error) {
-      errorToast(error.response.data.message, 1000)
-      console.log(error)
-    }
-  }
-
-
-
   return (
     <BackgroundDashboard config="flex flex-col">
       <SEO
@@ -40,7 +26,7 @@ const CustomGames = ({ games }: IGames) => {
         description="The NEXUS App simplifies your access to your games, unifying all platforms into one."
       />
       <GeralContainer>
-        {openModal ? <ModalAdd openModal={openModal} setOpenModal={setOpenModal} /> : null}
+        {openModalAddGames ? <ModalAdd openModal={openModalAddGames} setOpenModal={setOpenModalAddGames} /> : null}
         <LeftAside />
         <RightSide>
           <HeaderDashboard title="Games" />
@@ -48,7 +34,7 @@ const CustomGames = ({ games }: IGames) => {
             <section className="flex flex-col relative w-[100%]">
               <div className="w-[100%%] h-[100%] flex justify-end">
                 <button
-                  onClick={() => setOpenModal(!openModal)}
+                  onClick={() => setOpenModalAddGames(!openModalAddGames)}
                   className="flex rounded-[10px] w-[100%%] h-[100%] bg-[#131A39] text-[#ffffff] text-[20px] font-bold p-4"
                 >
                   <FaPlus />

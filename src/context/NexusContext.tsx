@@ -1,5 +1,11 @@
 import { useRouter } from "next/router";
-import React, { createContext, ReactNode, useContext, useRef, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import { FieldValues } from "react-hook-form";
 import api from "../services/api";
 import { errorToast, successToast } from "../services/toast";
@@ -14,6 +20,9 @@ type IContext = {
   profileModal: any;
   refreshData: () => void;
   handleGame: (game: FieldValues) => void;
+  openModalAddGames: boolean;
+  setOpenModalAddGames: Function;
+  handleDeleteGame: Function;
 };
 
 type INexusProvider = {
@@ -28,10 +37,11 @@ export type IUser = {
 export const NexusContext = createContext<IContext>({} as IContext);
 
 const NexusProvider = ({ children }: INexusProvider) => {
-  const router = useRouter()
+  const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
   const profileModal = useRef<HTMLDivElement>();
+  const [openModalAddGames, setOpenModalAddGames] = useState<boolean>(false);
 
   const handleUserModalOpen = () => {
     profileModal.current?.classList.add(
@@ -57,22 +67,37 @@ const NexusProvider = ({ children }: INexusProvider) => {
       })
 
       .catch(({ response: { data: error } }) => {
-        console.log(error)
+        console.log(error);
         errorToast(error, 2500);
       });
   };
 
   const refreshData = () => {
     router.replace(router.asPath);
-  }
+  };
 
   const handleGame = async (game: FieldValues) => {
     try {
-      await api.post("https://nexus-gamestand-api.herokuapp.com/custom_games", game);
-      refreshData()   
+      await api.post(
+        "https://nexus-gamestand-api.herokuapp.com/custom_games",
+        game
+      );
+      refreshData();
       successToast("Game added successfully", 1000);
+      setOpenModalAddGames(!openModalAddGames);
     } catch (error: any) {
       errorToast(String(error.response.data.message), 2500);
+    }
+  };
+
+  const handleDeleteGame = async (id:string) => {
+    try {
+      await api.delete(`/custom_games/${id}`)
+      refreshData();
+      successToast('Game deleted!', 1000)
+    } catch (error) {
+      errorToast(error.response.data.message, 1000)
+      console.log(error)
     }
   }
 
@@ -87,7 +112,10 @@ const NexusProvider = ({ children }: INexusProvider) => {
         setChecked,
         setUserModalOpen,
         refreshData,
-        handleGame
+        handleGame,
+        openModalAddGames,
+        setOpenModalAddGames,
+        handleDeleteGame
       }}
     >
       {" "}
@@ -98,4 +126,4 @@ const NexusProvider = ({ children }: INexusProvider) => {
 
 export default NexusProvider;
 
-export const useNexus = () => useContext(NexusContext)
+export const useNexus = () => useContext(NexusContext);
