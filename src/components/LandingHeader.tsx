@@ -60,7 +60,7 @@ const LandingHeader = ({
           <header className="z-[1] w-[100%] h-[60px] flex flex-col items-center justify-center relative">
             <div className="w-[80.5%] flex items-center gap-8 mt-3">
               <Image
-                src="/Logo.svg"
+                src="/Logo-dark.svg"
                 alt="Nexus logo"
                 width={198}
                 height={40}
@@ -93,7 +93,7 @@ const LandingHeader = ({
               {user ? (
                 <>
                   <button
-                    className="p-5 bg-primaryhover rounded-lg mt-5 ease-in-out duration-300 font-bebas mr-4 hover:bg-boxcolor hover:border-[1px] transition-all border-[1px] border-transparent animate__animated animate__pulse animate__infinite"
+                    className="p-5 bg-primarycolor rounded-lg mt-5 ease-in-out duration-300 font-bebas mr-4 hover:bg-boxcolor hover:border-[1px] transition-all border-[1px] border-transparent animate__animated animate__pulse animate__infinite"
                     onClick={handleClick}
                   >
                     Hey, {user.username} access your Dashboard!

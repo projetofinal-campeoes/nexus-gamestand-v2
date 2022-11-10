@@ -8,10 +8,11 @@ import { errorToast, successToast } from "../services/toast";
 
 const ModalAdd = ({openModal, setOpenModal}) => {
   const { register, handleSubmit } = useForm();
+
   const handleGame = async (game: FieldValues) => {
-    console.log(game)
     try {
-      await api.post("/custom_games/", game);      
+      console.log(game)
+      await api.post("https://nexus-gamestand-api.herokuapp.com/custom_games", game);      
       successToast("Game added successfully", 1000);
     } catch (error: any) {
       errorToast(String(error.response.data.message), 2500);
@@ -48,7 +49,7 @@ const ModalAdd = ({openModal, setOpenModal}) => {
                 <input
                   type="text"
                   placeholder="image URL"
-                  {...register("image_URL")}
+                  {...register("image_url")}
                   className="rounded-lg w-[100%] p-4 bg-inputbackgrounddark placeholder-placeholder shadow-md focus:outline-none text-defaulttextdark"
                 />
                 <button className={styles.buttonModal}>Add</button>

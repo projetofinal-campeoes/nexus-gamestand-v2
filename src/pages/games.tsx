@@ -20,7 +20,7 @@ const CustomGames = ({ games }: IGames) => {
   const handleDeleteGame = async (id:string) => {
     try {
       console.log(id)
-      await api.delete(`/custom_games/${id}}`)
+      await api.delete(`/custom_games/${id}`)
       successToast('Game deleted!', 1000)
     } catch (error) {
       errorToast(error.response.data.message, 1000)
@@ -55,8 +55,7 @@ const CustomGames = ({ games }: IGames) => {
             <section className="flex flex-col items-start relative w-[100%] h-[100%] overflow-auto">
               <div className="w-[100%%] h-[100%]">
                 <ul className="overflow-auto flex flex-wrap items-start gap-2 w-[100%] h-[100%]">
-                  {games.map(({ id, name, platform, image_url }) => {
-                    console.log(games)
+                  {games.map(({ id, name, platform, image_url }) => {                    
                     return (
                       <li key={id} className="bg-[#131A39] rounded-[15px] w-[160px] h-[250px]">
                         <img

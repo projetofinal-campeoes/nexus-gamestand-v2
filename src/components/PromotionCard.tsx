@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { FaTrash } from "react-icons/fa"
 import { HiPencil } from "react-icons/hi"
+import api from "../services/api"
 
 const PromotionCard = ({promotion}) => {
     const [alteredShinyMeter, setAlteredShinyMeter] = useState(promotion.shiny_meter)
@@ -42,14 +43,8 @@ const PromotionCard = ({promotion}) => {
         }
     }
     
-    const handleDeletePromo = (id: string) => {
-        const token = getCookie('token')
-
-        axios.delete(`https://nexus-gamestand-api.herokuapp.com/promotions/${id}`, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        })
+    const handleDeletePromo = async (id: string) => {
+        await api.delete(`/promotions/${id}`)
     }
 
     return(
