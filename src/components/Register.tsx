@@ -77,7 +77,7 @@ const Register = () => {
           </Input>
           <button className={styles.button}>Register</button>
         </form>
-        <span className="text-text text-xs text-center">
+        <span className="text-defaulttextdark text-xs text-center">
           Already have an account?{" "}
           <Link href="" passHref>
             <a
