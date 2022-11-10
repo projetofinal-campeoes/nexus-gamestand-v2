@@ -118,7 +118,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -149,7 +149,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -180,7 +180,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -211,7 +211,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}

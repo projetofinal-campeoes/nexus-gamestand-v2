@@ -66,9 +66,8 @@ const Login = () => {
                 src={session.user.image}
                 alt={`Foto do ${session.user.name}`}
               />
-              <p className="text-text text-[12px] mt-2">
-                {" "}
-                Hey, {session.user.name}, seems like you're already logged in!
+              <p className="text-text text-[12px] mt-2">                
+                Hey, {session.user.name}, seems like you are already logged in!
               </p>
               <div>
                 <button className="p-5 bg-primaryhover rounded-lg mt-5 ease-in-out duration-300 font-bebas mr-4 hover:bg-boxcolor hover:border-[1px] transition-all border-[1px] border-transparent animate__animated animate__pulse animate__infinite border-text text-text">

@@ -67,8 +67,7 @@ const NexusProvider = ({ children }: INexusProvider) => {
       })
 
       .catch(({ response: { data: error } }) => {
-        console.log(error);
-        errorToast(error, 2500);
+        errorToast(error.response.data.message, 2500);
       });
   };
 
