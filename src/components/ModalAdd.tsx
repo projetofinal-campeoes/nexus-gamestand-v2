@@ -5,19 +5,11 @@ import { useContext, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import { errorToast, successToast } from "../services/toast";
+import { useNexus } from "../context/NexusContext";
 
 const ModalAdd = ({openModal, setOpenModal}) => {
   const { register, handleSubmit } = useForm();
-
-  const handleGame = async (game: FieldValues) => {
-    try {
-      console.log(game)
-      await api.post("https://nexus-gamestand-api.herokuapp.com/custom_games", game);      
-      successToast("Game added successfully", 1000);
-    } catch (error: any) {
-      errorToast(String(error.response.data.message), 2500);
-    }
-  }
+  const { handleGame } = useNexus()
 
   return (
     <>

@@ -1,21 +1,24 @@
-import BackgroundDashboard from "../components/BackgroundDashboard";
-import GeralContainer from "../components/GeralContainer";
-import LeftAside from "../components/LeftAside";
-import RightSide from "../components/RightSide";
-import SEO from "../components/SEO";
-import HeaderDashboard from "../components/HeaderDashboard";
+import BackgroundDashboard from "../../components/BackgroundDashboard";
+import GeralContainer from "../../components/GeralContainer";
+import LeftAside from "../../components/LeftAside";
+import RightSide from "../../components/RightSide";
+import SEO from "../../components/SEO";
+import HeaderDashboard from "../../components/HeaderDashboard";
 import { FaTrashAlt, FaXbox, FaSteam, FaPlus } from "react-icons/fa";
 import { GiGamepadCross } from "react-icons/gi"
 import { useState } from "react";
 import { getCookie } from "cookies-next";
 import axios from "axios";
-import { IGames } from "../interfaces";
-import ModalAdd from "../components/ModalAdd";
-import api from "../services/api";
-import { errorToast, successToast } from "../services/toast";
+import { IGames } from "../../interfaces";
+import ModalAdd from "../../components/ModalAdd";
+import api from "../../services/api";
+import { errorToast, successToast } from "../../services/toast";
+import { useRouter } from "next/router";
 
 const CustomGames = ({ games }: IGames) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
+
+
   
   const handleDeleteGame = async (id:string) => {
     try {
@@ -97,7 +100,6 @@ export default CustomGames;
 
 export const getServerSideProps = async ({ req, res }) => {
   const token = getCookie("token", { req, res });
-  const id = getCookie("id", { req, res });
 
   const response = await axios.get(
     `https://nexus-gamestand-api.herokuapp.com/custom_games/users`,

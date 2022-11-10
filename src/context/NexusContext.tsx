@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { createContext, ReactNode, useRef, useState } from "react";
+import React, { createContext, ReactNode, useContext, useRef, useState } from "react";
 import { FieldValues } from "react-hook-form";
 import api from "../services/api";
 import { errorToast, successToast } from "../services/toast";
@@ -12,6 +12,8 @@ type IContext = {
   checked: boolean;
   setChecked: Function;
   profileModal: any;
+  refreshData: () => void;
+  handleGame: (game: FieldValues) => void;
 };
 
 type INexusProvider = {
@@ -26,6 +28,7 @@ export type IUser = {
 export const NexusContext = createContext<IContext>({} as IContext);
 
 const NexusProvider = ({ children }: INexusProvider) => {
+  const router = useRouter()
   const [checked, setChecked] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
   const profileModal = useRef<HTMLDivElement>();
@@ -58,6 +61,21 @@ const NexusProvider = ({ children }: INexusProvider) => {
         errorToast(error, 2500);
       });
   };
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
+
+  const handleGame = async (game: FieldValues) => {
+    try {
+      await api.post("https://nexus-gamestand-api.herokuapp.com/custom_games", game);
+      refreshData()   
+      successToast("Game added successfully", 1000);
+    } catch (error: any) {
+      errorToast(String(error.response.data.message), 2500);
+    }
+  }
+
   return (
     <NexusContext.Provider
       value={{
@@ -68,6 +86,8 @@ const NexusProvider = ({ children }: INexusProvider) => {
         checked,
         setChecked,
         setUserModalOpen,
+        refreshData,
+        handleGame
       }}
     >
       {" "}
@@ -77,3 +97,5 @@ const NexusProvider = ({ children }: INexusProvider) => {
 };
 
 export default NexusProvider;
+
+export const useNexus = () => useContext(NexusContext)

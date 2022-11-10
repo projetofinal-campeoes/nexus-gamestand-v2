@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import BackgroundInitial from "../components/BackgroundInitial";
-import SEO from "../components/SEO";
+import BackgroundInitial from "../../components/BackgroundInitial";
+import SEO from "../../components/SEO";
 import { useRouter } from "next/router";
-import SupportedPlatforms from "../components/SupportedPlatforms";
-import LandingHeader from "../components/LandingHeader";
-import Soon from "../components/Soon";
-import Loader from "../components/Loader";
+import SupportedPlatforms from "../../components/SupportedPlatforms";
+import LandingHeader from "../../components/LandingHeader";
+import Soon from "../../components/Soon";
+import Loader from "../../components/Loader";
 
 const VideoBg = () => {
   const router = useRouter();

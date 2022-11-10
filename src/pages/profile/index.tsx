@@ -1,14 +1,14 @@
 import { Avatar } from '@mui/material';
 import { getCookie } from 'cookies-next';
-import AvatarFriend from '../components/AvatarFriend';
-import BackgroundDashboard from '../components/BackgroundDashboard';
-import GeralContainer from '../components/GeralContainer';
-import HeaderDashboard from '../components/HeaderDashboard';
-import LeftAside from '../components/LeftAside';
-import RightSide from '../components/RightSide';
-import SEO from '../components/SEO';
-import { IUser } from '../interfaces';
-import api from '../services/api';
+import AvatarFriend from '../../components/AvatarFriend';
+import BackgroundDashboard from '../../components/BackgroundDashboard';
+import GeralContainer from '../../components/GeralContainer';
+import HeaderDashboard from '../../components/HeaderDashboard';
+import LeftAside from '../../components/LeftAside';
+import RightSide from '../../components/RightSide';
+import SEO from '../../components/SEO';
+import { IUser } from '../../interfaces';
+import api from '../../services/api';
 
 const Profile = ({ user }: IUser) => {
   const styleProfile = {
