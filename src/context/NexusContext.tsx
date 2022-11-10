@@ -44,19 +44,18 @@ const NexusProvider = ({ children }: INexusProvider) => {
 
   const onSubmitRegister = (account: FieldValues) => {
     delete account.confirmPassword;
-    account.steam = null;
-    account.epic = null;
-    account.playstation = null;
-    account.xbox = false;
+    account.steam_user = "steam_user";
 
     api
-      .post("/register", account)
-      .then(() => {
+      .post("/users", account)
+      .then((res) => {
         successToast("Success Register!", 1000);
+        console.log(res)
         navigate.push("/login");
       })
 
       .catch(({ response: { data: error } }) => {
+        console.log(error)
         errorToast(error, 2500);
       });
   };

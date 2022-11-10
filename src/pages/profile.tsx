@@ -1,4 +1,5 @@
 import { Avatar } from '@mui/material';
+import { getCookie } from 'cookies-next';
 import AvatarFriend from '../components/AvatarFriend';
 import BackgroundDashboard from '../components/BackgroundDashboard';
 import GeralContainer from '../components/GeralContainer';
@@ -6,10 +7,10 @@ import HeaderDashboard from '../components/HeaderDashboard';
 import LeftAside from '../components/LeftAside';
 import RightSide from '../components/RightSide';
 import SEO from '../components/SEO';
+import { IUser } from '../interfaces';
+import api from '../services/api';
 
-//#131A39
-
-const Profile = () => {
+const Profile = ({ user }: IUser) => {
   const styleProfile = {
     width: 171,
     height: 171,
@@ -34,12 +35,12 @@ const Profile = () => {
                 className='w-[100%] h-[180px] absolute top-0 object-cover hover:object-top object-center transition-[1s] rounded-t-[50px]'
               />
               <Avatar
-                alt='mathsudre'
-                src='https://avatars.githubusercontent.com/u/100591242?v=4'
+                alt={user.username}
+                src={user.avatar_url}
                 style={styleProfile}
               />
-              <h2 className='font-inter text-title2 font-bold text-defaulttextdark'>
-                MathSudre
+              <h2 className='mt-2 font-inter text-title2 font-bold text-defaulttextdark'>
+                {user.username}
               </h2>
             </section>
 
@@ -272,3 +273,17 @@ const Profile = () => {
 };
 
 export default Profile;
+
+export const getServerSideProps = async ({ req, res }) => {
+  const id = getCookie('id', { req, res });
+  const token = getCookie('token', { req, res });
+  const response = await api.get(`/users/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return {
+    props: { user: response.data },
+    revalidate: 10,
+  };
+};
