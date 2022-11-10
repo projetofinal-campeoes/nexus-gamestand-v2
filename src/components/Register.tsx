@@ -31,7 +31,7 @@ const Register = () => {
         className={`${styles.containerlogin} animate__animated animate__fadeIn`}
       >
         <Image
-          src="/nexus.logo.png"
+          src="/Logo-dark.svg"
           alt="Nexus logo"
           width={198}
           height={40}
