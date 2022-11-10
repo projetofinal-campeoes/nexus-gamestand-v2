@@ -50,7 +50,6 @@ const NexusProvider = ({ children }: INexusProvider) => {
       .post("/users", account)
       .then((res) => {
         successToast("Success Register!", 1000);
-        console.log(res)
         navigate.push("/login");
       })
 

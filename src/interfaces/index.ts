@@ -11,3 +11,14 @@ export interface IUser {
   updated_at: string;
   user: IUser
 }
+
+export interface IGame { 
+    id: string;
+    name: string;
+    image_url: string;
+    platform: string;
+    userId: string;
+}
+export interface IGames {
+  games: IGame[]
+}

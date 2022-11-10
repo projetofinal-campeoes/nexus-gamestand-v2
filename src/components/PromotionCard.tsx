@@ -38,10 +38,10 @@ const PromotionCard = ({promotion}) => {
         <li className="p-[20px] bg-boxcolordark rounded-[30px] text-defaulttextdark flex flex-col gap-4 cursor-default h-max">
             <div className="flex gap-2 items-center">
                 <Image src='/nexus.png' width={40} height={50} layout="fixed"/>
-                <h3 className="text-[20px] font-semibold">{promotion.name}</h3>
+                <h3 className="text-[30px] font-bebas">{promotion.name}</h3>
             </div>
-            <p>{promotion.description}</p>
-            <p className="text-primarycolor text-[27px] font-semibold">R$ {promotion.price.replace('.', ',')}</p>
+            <p className="text-[14px]">{promotion.description}</p>
+            <p className="text-primarycolor text-[27px] font-bebas">R$ {promotion.price.replace('.', ',')}</p>
             <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
                     <button className="text-[20px] bg-primarycolor px-2 py-1 font-bold rounded-md" onClick={() => dislikePromo(promotion.id)}>-</button>

@@ -284,6 +284,5 @@ export const getServerSideProps = async ({ req, res }) => {
   });
   return {
     props: { user: response.data },
-    revalidate: 10,
   };
 };
