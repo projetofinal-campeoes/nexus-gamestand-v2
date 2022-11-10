@@ -25,7 +25,7 @@ module.exports = {
     colors: {
       defaulttextdark: "#FFFFFF",
       boxcolordark: "#131A39",
-      placeholder: "##E1E1E1",
+      placeholder: "#E1E1E1",
       primarycolor: "#E6911A",
       secondcolor: "#E39830",
       thirdcolor: "#E1B06B",
@@ -48,7 +48,7 @@ module.exports = {
     },
     fontFamily: {
       inter: ["Inter", "ui-monospace", "SFMono-Regular"],
-      bebas: ["Bebas Neue", "ui-monospace", "SFMono-Regular"]
+      bebas: ["Bebas Neue", "ui-monospace", "SFMono-Regular"],
     },
     fontSize: {
       title1: "2.5rem",
