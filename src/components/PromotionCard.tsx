@@ -1,10 +1,18 @@
 import axios from "axios"
 import { getCookie } from "cookies-next"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { FaTrash } from "react-icons/fa"
+import { HiPencil } from "react-icons/hi"
 
 const PromotionCard = ({promotion}) => {
     const [alteredShinyMeter, setAlteredShinyMeter] = useState(promotion.shiny_meter)
+    const [userId, setUserId] = useState(null)
+
+    useEffect(() => {
+        const id = getCookie('id')
+        setUserId(id)
+    }, [])
 
     const likePromo = async (id: string) => {
         const token = getCookie("token")
@@ -33,6 +41,16 @@ const PromotionCard = ({promotion}) => {
             setAlteredShinyMeter((oldOne: number) => oldOne-2)
         }
     }
+    
+    const handleDeletePromo = (id: string) => {
+        const token = getCookie('token')
+
+        axios.delete(`https://nexus-gamestand-api.herokuapp.com/promotions/${id}`, {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        })
+    }
 
     return(
         <li className="p-[20px] bg-boxcolordark rounded-[30px] text-defaulttextdark flex flex-col gap-4 cursor-default h-max">
@@ -41,7 +59,21 @@ const PromotionCard = ({promotion}) => {
                 <h3 className="text-[30px] font-bebas">{promotion.name}</h3>
             </div>
             <p className="text-[14px]">{promotion.description}</p>
-            <p className="text-primarycolor text-[27px] font-bebas">R$ {promotion.price.replace('.', ',')}</p>
+                
+            <div className="flex justify-between items-center">
+                <p className="text-primarycolor text-[27px] font-bebas">R$ {promotion.price.replace('.', ',')}</p>
+                {
+                    promotion?.userId === userId &&
+                    <div className="flex gap-4 items-center">
+                        <button>
+                            <HiPencil size={24}/>
+                        </button>
+                        <button onClick={() => handleDeletePromo(promotion.id)}>
+                            <FaTrash size={20}/>
+                        </button>
+                    </div>
+                }
+            </div>
             <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
                     <button className="text-[20px] bg-primarycolor px-2 py-1 font-bold rounded-md" onClick={() => dislikePromo(promotion.id)}>-</button>
