@@ -11,7 +11,9 @@ const LeftAside = () => {
   return (
     <>  
         <div id="aside esquerda" className="mr-10 pr-6 border-r-[1px] border-[#333333] border-solid ">
-            <Image src="/Logo-dark.svg" width="200" height="40" className="px-10 cursor-pointer"/>
+            <Link href='/dashboard'>
+              <Image src="/Logo-dark.svg" width="200" height="40" className="px-10 cursor-pointer" />
+            </Link>
             <div className="pt-[7.5rem]">
               <div className="flex flex-col gap-5 text-defaulttextdark">
                 <p className="text-[12px] cursor-default">Nexus tools</p>

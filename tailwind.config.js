@@ -8,19 +8,19 @@ module.exports = {
   theme: {
     screens: {
       sm: "640px",
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 640px)
 
       md: "768px",
-      // => @media (min-width: 768px) { ... }
+      // => @media (min-width: 768px)
 
       lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
+      // => @media (min-width: 1024px)
 
       xl: "1200px",
-      // => @media (min-width: 1280px) { ... }
+      // => @media (min-width: 1280px)
 
       "2xl": "1920px",
-      // => @media (min-width: 1536px) { ... }
+      // => @media (min-width: 1536px)
     },
     colors: {
       defaulttextdark: "#FFFFFF",
@@ -66,13 +66,10 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        gayPride:
-          "rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;",
-        gayPride2:
-          "rgb(255, 85, 85) 0px 0px 0px 3px, rgb(255, 156, 85) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(31, 193, 27) 0px 0px 0px 12px, rgb(85, 91, 255) 0px 0px 0px 15px;",
-        loginShadow:
-          "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;",
-      },
+        'gayPride': 'rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px',
+        'gayPride2': 'rgb(255, 85, 85) 0px 0px 0px 3px, rgb(255, 156, 85) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(31, 193, 27) 0px 0px 0px 12px, rgb(85, 91, 255) 0px 0px 0px 15px',
+        'loginShadow': 'rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px'
+      }
     },
   },
   plugins: [],

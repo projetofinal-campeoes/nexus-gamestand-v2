@@ -1,14 +1,14 @@
 import { Avatar } from '@mui/material';
 import { getCookie } from 'cookies-next';
-import AvatarFriend from '../components/AvatarFriend';
-import BackgroundDashboard from '../components/BackgroundDashboard';
-import GeralContainer from '../components/GeralContainer';
-import HeaderDashboard from '../components/HeaderDashboard';
-import LeftAside from '../components/LeftAside';
-import RightSide from '../components/RightSide';
-import SEO from '../components/SEO';
-import { IUser } from '../interfaces';
-import api from '../services/api';
+import AvatarFriend from '../../components/AvatarFriend';
+import BackgroundDashboard from '../../components/BackgroundDashboard';
+import GeralContainer from '../../components/GeralContainer';
+import HeaderDashboard from '../../components/HeaderDashboard';
+import LeftAside from '../../components/LeftAside';
+import RightSide from '../../components/RightSide';
+import SEO from '../../components/SEO';
+import { IUser } from '../../interfaces';
+import api from '../../services/api';
 
 const Profile = ({ user }: IUser) => {
   const styleProfile = {
@@ -118,7 +118,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -149,7 +149,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -180,7 +180,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}
@@ -211,7 +211,7 @@ const Profile = ({ user }: IUser) => {
                       </h3>
                       <p className='text-defaulttextdark text-[13px]'>
                         New world has a very good promotion on steam, follow the
-                        link there and let's close a server guys
+                        link there and lets close a server guys
                       </p>
                       <span className='font-bold text-primarycolor'>
                         {' '}

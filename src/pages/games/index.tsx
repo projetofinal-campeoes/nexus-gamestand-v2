@@ -1,35 +1,24 @@
-import BackgroundDashboard from "../components/BackgroundDashboard";
-import GeralContainer from "../components/GeralContainer";
-import LeftAside from "../components/LeftAside";
-import RightSide from "../components/RightSide";
-import SEO from "../components/SEO";
-import HeaderDashboard from "../components/HeaderDashboard";
+import BackgroundDashboard from "../../components/BackgroundDashboard";
+import GeralContainer from "../../components/GeralContainer";
+import LeftAside from "../../components/LeftAside";
+import RightSide from "../../components/RightSide";
+import SEO from "../../components/SEO";
+import HeaderDashboard from "../../components/HeaderDashboard";
 import { FaTrashAlt, FaXbox, FaSteam, FaPlus } from "react-icons/fa";
 import { GiGamepadCross } from "react-icons/gi"
 import { useState } from "react";
 import { getCookie } from "cookies-next";
 import axios from "axios";
-import { IGames } from "../interfaces";
-import ModalAdd from "../components/ModalAdd";
-import api from "../services/api";
-import { errorToast, successToast } from "../services/toast";
+import { IGames } from "../../interfaces";
+import ModalAdd from "../../components/ModalAdd";
+import api from "../../services/api";
+import { errorToast, successToast } from "../../services/toast";
+import { useRouter } from "next/router";
+import { useNexus } from "../../context/NexusContext";
 
 const CustomGames = ({ games }: IGames) => {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const { openModalAddGames, setOpenModalAddGames, handleDeleteGame } = useNexus()
   
-  const handleDeleteGame = async (id:string) => {
-    try {
-      console.log(id)
-      await api.delete(`/custom_games/${id}}`)
-      successToast('Game deleted!', 1000)
-    } catch (error) {
-      errorToast(error.response.data.message, 1000)
-      console.log(error)
-    }
-  }
-
-
-
   return (
     <BackgroundDashboard config="flex flex-col">
       <SEO
@@ -37,7 +26,7 @@ const CustomGames = ({ games }: IGames) => {
         description="The NEXUS App simplifies your access to your games, unifying all platforms into one."
       />
       <GeralContainer>
-        {openModal ? <ModalAdd openModal={openModal} setOpenModal={setOpenModal} /> : null}
+        {openModalAddGames ? <ModalAdd openModal={openModalAddGames} setOpenModal={setOpenModalAddGames} /> : null}
         <LeftAside />
         <RightSide>
           <HeaderDashboard title="Games" />
@@ -45,7 +34,7 @@ const CustomGames = ({ games }: IGames) => {
             <section className="flex flex-col relative w-[100%]">
               <div className="w-[100%%] h-[100%] flex justify-end">
                 <button
-                  onClick={() => setOpenModal(!openModal)}
+                  onClick={() => setOpenModalAddGames(!openModalAddGames)}
                   className="flex rounded-[10px] w-[100%%] h-[100%] bg-[#131A39] text-[#ffffff] text-[20px] font-bold p-4"
                 >
                   <FaPlus />
@@ -55,8 +44,7 @@ const CustomGames = ({ games }: IGames) => {
             <section className="flex flex-col items-start relative w-[100%] h-[100%] overflow-auto">
               <div className="w-[100%%] h-[100%]">
                 <ul className="overflow-auto flex flex-wrap items-start gap-2 w-[100%] h-[100%]">
-                  {games.map(({ id, name, platform, image_url }) => {
-                    console.log(games)
+                  {games.map(({ id, name, platform, image_url }) => {                    
                     return (
                       <li key={id} className="bg-[#131A39] rounded-[15px] w-[160px] h-[250px]">
                         <img
@@ -98,7 +86,6 @@ export default CustomGames;
 
 export const getServerSideProps = async ({ req, res }) => {
   const token = getCookie("token", { req, res });
-  const id = getCookie("id", { req, res });
 
   const response = await axios.get(
     `https://nexus-gamestand-api.herokuapp.com/custom_games/users`,
