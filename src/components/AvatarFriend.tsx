@@ -10,8 +10,8 @@ interface IAvatarFriend {
 
 const AvatarFriend = ({ alt, src, status }: IAvatarFriend) => {
   const style = {
-    width: 80,
-    height: 80
+    width: 60,
+    height: 60
   }
 
   const statusOn = {

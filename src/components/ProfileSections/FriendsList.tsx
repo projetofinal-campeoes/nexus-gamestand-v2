@@ -5,24 +5,24 @@ import AvatarFriend from "../AvatarFriend"
 
 const FriendList = ({friends}:IFriends) => {
   return (
-    <div className='w-[25%] h-[230px]'>
+    <div className='w-[25%] border border-[#333333] border-solid relative p-2 rounded-b-[25px] rounded-t-[5px]'>
                 <h3 className='text-defaulttextdark mb-2'>
                   {' '}
-                  <span className='font-bold'> Friends </span> {friends.length}{' '}
+                  <span className='font-bebas  text-[30px] bg-backgroundcolor mb-4 px-1 absolute top-[-14px]'> Friends: {friends.length}{' '}</span> 
                 </h3>
 
-                <ul className='overflow-auto p-2 flex flex-wrap items-center justify-center gap-2 w-[100%] h-[230px] rounded-b-[8px]'>
+                <ul className='overflow-auto flex flex-wrap gap-2 mt-3 w-[100%] h-[235px]'>
                     {
                       friends.map(friend =>
-                      <li className='drop-shadow-2xl w-[100%] h-[100px] gap-2 rounded-lg flex items-center justify-around p-4 border-[2px] border-primarycolor border-solid'>
+                      <li className='drop-shadow-2xl w-[48%] h-[80px] gap-2 rounded-lg flex items-center justify-around p-4 bg-boxcolordark'>
                       <AvatarFriend
                         alt={friend.friendName}
                         src={friend.friendAvatar}
                         status={friend.friendStatus}
                       />
   
-                      <div className='flex flex-col gap-2 w-[40%]'>
-                        <h3 className='text-defaulttextdark mb-2 font-bold text-[22px]'>
+                      <div className='flex flex-col gap-2 w-[40%] ml-2'>
+                        <h3 className='text-defaulttextdark mb-2 font-bebas text-[20px] truncate cursor-default' >
                         {friend.friendName}
                         </h3>
   

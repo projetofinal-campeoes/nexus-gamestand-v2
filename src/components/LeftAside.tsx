@@ -15,7 +15,7 @@ const LeftAside = () => {
             <Link href='/dashboard'>
               <Image src="/Logo-dark.svg" width="200" height="40" className="px-10 cursor-pointer" />
             </Link>
-            <div className="pt-[7.5rem]">
+            <div className="pt-[5.5rem]">
               <div className="flex flex-col gap-5 text-defaulttextdark">
                 <p className="text-[12px] cursor-default">Nexus tools</p>
                 <div className="flex gap-5">

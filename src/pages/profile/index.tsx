@@ -30,12 +30,12 @@ const Profile = ({ user }: IProfile) => {
         <RightSide>
           <HeaderDashboard title='PROFILE' />
 
-          <main className='flex items-center justify-between flex-col bg-boxcolordark w-[100%] h-[100%] rounded-[38px]'>
+          <main className='flex items-center justify-between flex-col w-[100%] h-[100%] rounded-[38px]'>
 
             <section className='flex flex-col items-center relative w-[100%]'>
               <img
                 src='/smooth-background-blur.png'
-                className='w-[100%] h-[180px] absolute top-0 object-cover hover:object-top object-center transition-[1s] rounded-t-[50px]'
+                className='w-[100%] h-[180px] absolute top-0 object-cover hover:object-top object-center transition-all duration-500 rounded-t-[50px]'
               />
               <Avatar
                 alt={user.username}
