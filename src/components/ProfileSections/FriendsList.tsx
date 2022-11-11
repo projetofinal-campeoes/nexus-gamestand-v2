@@ -11,7 +11,7 @@ const FriendList = ({friends}:IFriends) => {
                   <span className='font-bebas  text-[30px] bg-backgroundcolor mb-4 px-1 absolute top-[-14px]'> Friends: {friends.length}{' '}</span> 
                 </h3>
 
-                <ul className='overflow-auto flex flex-wrap gap-2 mt-3 w-[100%] h-[235px]'>
+                <ul className='overflow-auto flex flex-wrap gap-2 mt-3 w-[100%] h-[285px]'>
                     {
                       friends.map(friend =>
                       <li key={friend.id} className='drop-shadow-2xl w-[48%] h-[80px] gap-2 rounded-lg flex items-center justify-around p-4 bg-boxcolordark'>

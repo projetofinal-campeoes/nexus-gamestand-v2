@@ -11,7 +11,7 @@ const GamesList = ({games}:IGames) => {
                   <span className='font-bebas  text-[30px] bg-backgroundcolor mb-4 px-1 absolute top-[-14px]'>Games: {' '}{games.length}</span>
                 </h3>
 
-                <ul className='overflow-auto flex flex-wrap items-center gap-2 w-[100%] mt-3 h-[235px] rounded-b-[20px]'>
+                <ul className='overflow-auto flex flex-wrap items-center gap-2 w-[100%] mt-3 h-[285px] rounded-b-[20px]'>
                 {
                   games.map(game => 
                     <li key={game.id}>

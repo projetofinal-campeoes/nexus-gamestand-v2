@@ -30,7 +30,7 @@ const Profile = ({ user }: IProfile) => {
         <RightSide>
           <HeaderDashboard title='PROFILE' />
 
-          <main className='flex items-center justify-between flex-col w-[100%] h-[100%] rounded-[38px]'>
+          <main className='flex items-center flex-col w-[100%] h-[100%] rounded-[38px]'>
 
             <section className='flex flex-col items-center relative w-[100%]'>
               <img
@@ -46,7 +46,7 @@ const Profile = ({ user }: IProfile) => {
                 {user.username}
               </h2>
             </section>
-            <section className='flex justify-between gap-3 w-[100%] h-[300px] p-[20px] rounded-b-[38px]'>
+            <section className='flex justify-between gap-3 mt-5 w-[100%] h-[350px] p-[20px] rounded-b-[38px]'>
             
               <GamesList games={user.custom_games} />
               <PromotionsList promotions={user.promotions} />

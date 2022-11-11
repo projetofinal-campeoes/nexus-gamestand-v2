@@ -12,7 +12,7 @@ const PromotionsList = ({promotions}:IPromotions) => {
         <span className='font-bebas text-[30px] bg-backgroundcolor mb-4 px-1 absolute top-[-14px] text-defaulttextdark'> Promotions: {promotions.length}{' '}</span>
       </h3>
 
-      <ul className='overflow-auto flex flex-wrap items-center gap-2 mt-3 w-[100%] h-[235px]'>
+      <ul className='overflow-auto flex flex-wrap items-center gap-2 mt-3 w-[100%] h-[285px] rounded-b-[25px]'>
 
         {
           promotions.map(promo =>
