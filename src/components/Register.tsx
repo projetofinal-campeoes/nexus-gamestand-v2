@@ -31,7 +31,7 @@ const Register = () => {
         className={`${styles.containerlogin} animate__animated animate__fadeIn`}
       >
         <Image
-          src="/nexus.logo.png"
+          src="/Logo-dark.svg"
           alt="Nexus logo"
           width={198}
           height={40}
@@ -77,7 +77,7 @@ const Register = () => {
           </Input>
           <button className={styles.button}>Register</button>
         </form>
-        <span className="text-text text-xs text-center">
+        <span className="text-defaulttextdark text-xs text-center">
           Already have an account?{" "}
           <Link href="" passHref>
             <a

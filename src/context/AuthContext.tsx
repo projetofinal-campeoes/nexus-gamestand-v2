@@ -56,22 +56,25 @@ export default function AuthProvider({ children }: IProvider) {
     try {
       const {
         data: {
-          accessToken,
+          token,
           user: { id },
         },
       } = await api.post("/login", account);
-      setCookie("token", accessToken);
+      setCookie("token", token);
       setCookie("id", id);
-      api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       const { data } = await api.get(`/users/${id}`);
       setUser(data);
       successToast("Success Login!", 1000);
       router.push("/dashboard");
-    } catch ({ response: { data: error } }: IError | any) {
-      errorToast(String(error), 2500);
+    } catch (error: IError | any) {
+      errorToast(String(error.response.data.message), 2500);
     }
   };
+
+
+
 
   const testUserToken = async () => {
     const tokenOnCookies = getCookie("token");
@@ -105,7 +108,7 @@ export default function AuthProvider({ children }: IProvider) {
         setIsLoading,
         handleLogin,
         handleLogout,
-        testUserToken,
+        testUserToken
       }}
     >
       {children}
