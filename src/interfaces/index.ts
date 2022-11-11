@@ -53,6 +53,8 @@ export interface IFriend {
   userId: string;
   friendId: string;
   friendName: string;
+  friendStatus: boolean;
+  friendAvatar: string;
 }
 
 export interface IFriends{
