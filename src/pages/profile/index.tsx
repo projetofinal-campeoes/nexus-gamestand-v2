@@ -11,8 +11,8 @@ import RightSide from '../../components/RightSide';
 import SEO from '../../components/SEO';
 import { IProfile } from '../../interfaces';
 import api from '../../services/api';
-
 const Profile = ({ user }: IProfile) => {
+
   const styleProfile = {
     width: 171,
     height: 171,
@@ -31,6 +31,7 @@ const Profile = ({ user }: IProfile) => {
           <HeaderDashboard title='PROFILE' />
 
           <main className='flex items-center justify-between flex-col bg-boxcolordark w-[100%] h-[100%] rounded-[38px]'>
+
             <section className='flex flex-col items-center relative w-[100%]'>
               <img
                 src='/smooth-background-blur.png'
@@ -45,11 +46,12 @@ const Profile = ({ user }: IProfile) => {
                 {user.username}
               </h2>
             </section>
-
             <section className='flex justify-between gap-3 w-[100%] h-[300px] p-[20px] rounded-b-[38px]'>
+            
               <GamesList games={user.custom_games} />
               <PromotionsList promotions={user.promotions} />
               <FriendList friends={user.friends}/>
+              
             </section>
           </main>
         </RightSide>
@@ -68,7 +70,6 @@ export const getServerSideProps = async ({ req, res }) => {
       authorization: `Bearer ${token}`,
     },
   });
-  //console.log(response.data)
   return {
     props: { user: response.data },
   };

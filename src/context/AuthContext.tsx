@@ -23,7 +23,6 @@ interface IAuthContext {
   handleLogin: (account: FieldValues) => void;
   handleLogout: () => void;
   testUserToken: () => void;
-  handleGame: (game: FieldValues) => void;
 }
 
 export interface IUser {
@@ -74,17 +73,8 @@ export default function AuthProvider({ children }: IProvider) {
     }
   };
 
-  //wtf? nao funcionante
-  const handleGame = async (game: FieldValues) => {
-    console.log(game);
-    try {
-      const token = getCookie("token");
-      await api.post("/custom_games", game);
-      successToast("Game added successfully", 1000);
-    } catch (error: IError | any) {
-      errorToast(String(error.response.data.message), 2500);
-    }
-  };
+
+
 
   const testUserToken = async () => {
     const tokenOnCookies = getCookie("token");
@@ -118,8 +108,7 @@ export default function AuthProvider({ children }: IProvider) {
         setIsLoading,
         handleLogin,
         handleLogout,
-        testUserToken,
-        handleGame,
+        testUserToken
       }}
     >
       {children}
