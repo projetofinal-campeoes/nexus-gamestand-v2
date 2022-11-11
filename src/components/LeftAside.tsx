@@ -6,8 +6,10 @@ import { BsFillSunFill } from 'react-icons/bs'
 import { FaBookReader, FaBug, FaCoins, FaRegUserCircle, FaUserFriends } from 'react-icons/fa'
 import { FiLogOut } from 'react-icons/fi'
 import { GiGamepadCross } from 'react-icons/gi'
+import { useAuth } from '../context/AuthContext'
 
 const LeftAside = () => {
+  const { handleLogout } = useAuth()
   
   return (
     <>  
@@ -17,10 +19,8 @@ const LeftAside = () => {
             </Link>
             <div className="pt-[5.5rem]">
               <div className="flex flex-col gap-5 text-defaulttextdark">
-                <p className="text-[12px] cursor-default">Nexus tools</p>
-                <div className="flex gap-5">
-                  <FaRegUserCircle className="cursor-pointer" /> <Link href ="/profile" className="cursor-pointer font-bebas"><p className='cursor-pointer font-bebas text-[20px]'>Profile</p></Link>
-                </div>
+                <p className="text-[12px] cursor-default">Nexus sections</p>
+                
                 <div className="flex gap-5">
                   <GiGamepadCross className="cursor-pointer" /> <Link href ="/games" className="cursor-pointer font-bebas"><p className='cursor-pointer font-bebas text-[20px]'>Games</p></Link> 
                 </div>
@@ -38,6 +38,9 @@ const LeftAside = () => {
                 <p className="text-[12px] cursor-default mt-2">User tools</p>
                 <div className="flex gap-5">
                   <FaBookReader className="cursor-pointer" /> <Link href ="/instructions"><p className='cursor-pointer font-bebas text-[20px]'>Instructions</p></Link>
+                </div>
+                <div className="flex gap-5">
+                  <FaRegUserCircle className="cursor-pointer" /> <Link href ="/profile" className="cursor-pointer font-bebas"><p className='cursor-pointer font-bebas text-[20px]'>Profile</p></Link>
                 </div>                
                 <div className="flex gap-5">
                   <AiOutlineSetting className="cursor-pointer" /> <Link href ="/profile"><p className='cursor-pointer font-bebas text-[20px]'>Settings</p></Link>
@@ -46,7 +49,7 @@ const LeftAside = () => {
                   <FaBug className="cursor-pointer" /> <Link href ="/bug_report" ><p className='cursor-pointer font-bebas text-[20px]'>Bug report</p></Link>
                 </div>
                 <div className="flex gap-5">
-                  <FiLogOut className="cursor-pointer" /> <p className="cursor-pointer font-bebas text-[20px]">Log out</p>
+                  <FiLogOut className="cursor-pointer" /> <p className="cursor-pointer font-bebas text-[20px]" onClick={() => handleLogout()}>Log out</p>
                 </div>
               </div>
             </div>

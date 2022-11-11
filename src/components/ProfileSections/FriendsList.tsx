@@ -14,7 +14,7 @@ const FriendList = ({friends}:IFriends) => {
                 <ul className='overflow-auto flex flex-wrap gap-2 mt-3 w-[100%] h-[235px]'>
                     {
                       friends.map(friend =>
-                      <li className='drop-shadow-2xl w-[48%] h-[80px] gap-2 rounded-lg flex items-center justify-around p-4 bg-boxcolordark'>
+                      <li key={friend.id} className='drop-shadow-2xl w-[48%] h-[80px] gap-2 rounded-lg flex items-center justify-around p-4 bg-boxcolordark'>
                       <AvatarFriend
                         alt={friend.friendName}
                         src={friend.friendAvatar}

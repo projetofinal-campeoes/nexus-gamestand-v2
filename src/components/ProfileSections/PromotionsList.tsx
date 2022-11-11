@@ -41,7 +41,7 @@ const PromotionsList = ({promotions}:IPromotions) => {
               <span className='text-primarycolor'>{promo.shiny_meter}</span>
             </div>
 
-            <a href={promo.promo_url} target='_blank' className='text-defaulttextdark cursor-pointer text-[12px]'>
+            <a href={promo.promo_url} target='_blank' rel="noreferrer" className='text-defaulttextdark cursor-pointer text-[12px]'>
               Ver na loja
             </a>
           </div>

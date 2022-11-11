@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useAuth } from "../context/AuthContext";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
 
@@ -21,6 +21,7 @@ const LandingHeader = ({
   fadeOut,
 }: ILandingPage) => {
   const { user } = useAuth();
+ 
 
   const video = ["/wow.mp4", "/cars.mp4", "/horizon.mp4", "/bf4.mp4"];
   const random = Math.floor(Math.random() * video.length);
@@ -33,6 +34,7 @@ const LandingHeader = ({
       router.reload();
     }, 500);
   };
+
   return (
     <>
       <div
@@ -131,7 +133,7 @@ const LandingHeader = ({
           borderRadius: "5px",
           padding: "15px",
           color: "#FFFF",
-          backgroundColor: "#805BE8",
+          backgroundColor: "#E6911A",
         }}
       >
         This website uses cookies to enhance the user experience.

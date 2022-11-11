@@ -6,14 +6,10 @@ import SEO from "../../components/SEO";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import { FaTrashAlt, FaXbox, FaSteam, FaPlus } from "react-icons/fa";
 import { GiGamepadCross } from "react-icons/gi"
-import { useState } from "react";
 import { getCookie } from "cookies-next";
 import axios from "axios";
 import { IGames } from "../../interfaces";
 import ModalAdd from "../../components/ModalAdd";
-import api from "../../services/api";
-import { errorToast, successToast } from "../../services/toast";
-import { useRouter } from "next/router";
 import { useNexus } from "../../context/NexusContext";
 
 const CustomGames = ({ games }: IGames) => {

@@ -114,7 +114,7 @@ const NexusProvider = ({ children }: INexusProvider) => {
         handleGame,
         openModalAddGames,
         setOpenModalAddGames,
-        handleDeleteGame
+        handleDeleteGame,
       }}
     >
       {" "}

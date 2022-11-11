@@ -10,6 +10,7 @@ import {
 import { FieldValues } from "react-hook-form";
 import api from "../services/api";
 import { errorToast, successToast } from "../services/toast";
+import { useNexus } from "./NexusContext";
 
 interface IProvider {
   children: ReactNode;
@@ -49,7 +50,6 @@ const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 export default function AuthProvider({ children }: IProvider) {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
   const router = useRouter();
 
   const handleLogin = async (account: FieldValues) => {
@@ -73,9 +73,6 @@ export default function AuthProvider({ children }: IProvider) {
     }
   };
 
-
-
-
   const testUserToken = async () => {
     const tokenOnCookies = getCookie("token");
     const idOnCookies = getCookie("id");
@@ -95,8 +92,8 @@ export default function AuthProvider({ children }: IProvider) {
   const handleLogout = () => {
     deleteCookie("token");
     deleteCookie("id");
-
-    router.push("/");
+    setUser(null)        
+    router.push(`/`);     
   };
 
   return (
@@ -108,7 +105,7 @@ export default function AuthProvider({ children }: IProvider) {
         setIsLoading,
         handleLogin,
         handleLogout,
-        testUserToken
+        testUserToken,
       }}
     >
       {children}
