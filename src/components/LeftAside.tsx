@@ -43,7 +43,7 @@ const LeftAside = () => {
                   <FaRegUserCircle className="cursor-pointer" /> <Link href ="/profile" className="cursor-pointer font-bebas"><p className='cursor-pointer font-bebas text-[20px]'>Profile</p></Link>
                 </div>                
                 <div className="flex gap-5">
-                  <AiOutlineSetting className="cursor-pointer" /> <Link href ="/profile"><p className='cursor-pointer font-bebas text-[20px]'>Settings</p></Link>
+                  <AiOutlineSetting className="cursor-pointer" /> <Link href ="/settings"><p className='cursor-pointer font-bebas text-[20px]'>Settings</p></Link>
                 </div>
                 <div className="flex gap-5">
                   <FaBug className="cursor-pointer" /> <Link href ="/bug_report" ><p className='cursor-pointer font-bebas text-[20px]'>Bug report</p></Link>
