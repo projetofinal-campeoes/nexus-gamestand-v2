@@ -6,6 +6,7 @@ import NexusProvider from "../context/NexusContext";
 import DashboardProvider from "../context/DashboardContext";
 import AuthProvider from "../context/AuthContext";
 import { SessionProvider } from "next-auth/react"
+import FriendsProvider from "../context/FriendsContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
@@ -13,10 +14,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <AuthProvider>
         <NexusProvider>
           <DashboardProvider>
-            <ToastContainer
-              toastStyle={{ backgroundColor: "#1e212a", accentColor:"#E5901A", color: "white" }}
-            />
-            <Component {...pageProps} />
+            <FriendsProvider>
+              <ToastContainer
+                toastStyle={{ backgroundColor: "#1e212a", accentColor: "#E5901A", color: "white" }}
+              />
+              <Component {...pageProps} />
+            </FriendsProvider>
           </DashboardProvider>
         </NexusProvider>
       </AuthProvider>
