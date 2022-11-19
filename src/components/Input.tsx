@@ -8,11 +8,12 @@ interface IInputProps {
   name?: string;
   register?: any;
   onChange?: Function;
+  style?:string
 }
 
-export default function Input({ children, type, placeholder, name, register }: IInputProps) {
+export default function Input({ children, type, placeholder, name, register, style }: IInputProps) {
   return (
-    <label className={styles.inputBox}>
+    <label className={`${styles.inputBox} ${style}`}>
       {children}
       <input
         type={type}
