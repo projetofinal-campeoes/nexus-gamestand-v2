@@ -8,6 +8,7 @@ import {
     useEffect,
 } from "react";
 import { FieldValues } from "react-hook-form";
+import { IFriend } from "../interfaces";
 import api from "../services/api";
 import { errorToast, successToast } from "../services/toast";
 import { useAuth } from "./AuthContext";
@@ -19,8 +20,10 @@ interface IProvider {
 
 interface IFriendContext {
     addFriend: (friendName: string) => void;
-    removeFriend: (friendId: string)=>void;
-    allUsers: []
+    removeFriend: (friendId: string) => void;
+    allUsers: [];
+    friends: IFriend[] | [];
+    setFriends: (friend: IFriend[]) => void;
 }
 
 export interface IUser {
@@ -45,26 +48,21 @@ interface IError {
 const FriendContext = createContext<IFriendContext>({} as IFriendContext);
 
 export default function FriendsProvider({ children }: IProvider) {
-    // const [user, setUser] = useState<IUser | null>(null);
-    // const [isLoading, setIsLoading] = useState<boolean>(true);
-    // const router = useRouter();
-    // const { user, setUser } = useAuth();
 
     const [allUsers, setAllUsers] = useState()
-    // const [friends, setFriends] = useState()
+    const [friends, setFriends] = useState<IFriend[] | []>([])
     // const [list, setList] = useState()
 
     const addFriend = async () => {
-        // const id = getCookie('id', { req, res });
-        const token = getCookie('token');
-        const { data } = await api.post(`/friends`, { username: "MatheusAdmin" })
+        const { data } = await api.post(`/friends`, { username: "Sidarta" })
         console.log(data)
     }
+    // addFriend()
 
     const removeFriend = async (friendId: string) => {
-        const id = getCookie('id');
-        const token = getCookie('token');
-        const { data } = await api.delete(`/friends/${friendId}`)
+        await api.delete(`/friends/${friendId}`)
+        const filter = friends.filter((friend: IFriend) => friend.friendId !== friendId)
+        setFriends(filter)
     }
 
     useEffect(() => {
@@ -76,16 +74,29 @@ export default function FriendsProvider({ children }: IProvider) {
         getUsers()
     }, []);
 
-    console.log(allUsers)
-    
+    useEffect(() => {
+        async function getFriends() {
+            const id = getCookie('id');
+            const token = getCookie('token');
+            const response = await api.get(`/users/${id}`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            });
+            setFriends(response.data.friends)
+        }
+        getFriends()
+    }, []);
+
     return (
         <FriendContext.Provider
             value={{
                 addFriend,
                 removeFriend,
                 allUsers,
-            }}
-        >
+                friends,
+                setFriends,
+            }}>
             {children}
         </FriendContext.Provider>
     );

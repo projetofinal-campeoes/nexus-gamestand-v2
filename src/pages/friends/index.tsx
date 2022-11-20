@@ -10,26 +10,16 @@ import { getCookie } from 'cookies-next'
 import axios from 'axios'
 import AvatarFriend from "../../components/AvatarFriend";
 import api from "../../services/api";
-import { IProfile } from "../../interfaces";
+import { IFriend, IProfile } from "../../interfaces";
 import { MdOutlinePersonRemove } from "react-icons/md";
 import { useFriends } from "../../context/FriendsContext";
 
-const Friends = ({ user }: IProfile) => {
+const Friends = () => {
     // console.log(allUsers)
-    const friends = user.friends
+    // const friends = user.friends
+    const { removeFriend, friends, setFriends } = useFriends()
     console.log(friends)
 
-    // useEffect(() => {
-    //     async function getUsers() {
-    //         const { data } = await api.get(`/users`)
-    //         console.log(data)
-    //         // setAllUsers(data)
-    //         // console.log(allUsers)
-    //     }
-    //     getUsers()
-    // }, []);
-
-    const { removeFriend } = useFriends()
     return (
         <BackgroundDashboard config="flex flex-col">
             <SEO
@@ -77,31 +67,15 @@ const Friends = ({ user }: IProfile) => {
 
 export default Friends;
 
-// const addFriend = async () => {
-//     // const id = getCookie('id', { req, res });
-//     const token = getCookie('token');
-//     const { data } = await api.post(`/friends`, {username: "dorgin"})
-//     console.log(data)
-// }
-// addFriend()
-
-// const removeFriend = async (friendId: string) => {
-//     const id = getCookie('id');
-//     const token = getCookie('token');
-//     const { data } = await api.delete(`/friends/${friendId}`)
-//     console.log(data)
-// }
-// removeFriend()
-
-export const getServerSideProps = async ({ req, res }) => {
-    const id = getCookie('id', { req, res });
-    const token = getCookie('token', { req, res });
-    const response = await api.get(`/users/${id}`, {
-        headers: {
-            authorization: `Bearer ${token}`,
-        },
-    });
-    return {
-        props: { user: response.data },
-    };
-};
+// export const getServerSideProps = async ({ req, res }) => {
+//     const id = getCookie('id', { req, res });
+//     const token = getCookie('token', { req, res });
+//     const response = await api.get(`/users/${id}`, {
+//         headers: {
+//             authorization: `Bearer ${token}`,
+//         },
+//     });
+//     return {
+//         props: { user: response.data },
+//     };
+// };
