@@ -13,6 +13,7 @@ import { errorToast, successToast } from "../services/toast";
 type IContext = {
   onSubmitRegister: (account: object) => void;
   userModalOpen: boolean;
+  editSetting: boolean;
   handleUserModalOpen: Function;
   setUserModalOpen: Function;
   checked: boolean;
@@ -23,6 +24,8 @@ type IContext = {
   openModalAddGames: boolean;
   setOpenModalAddGames: Function;
   handleDeleteGame: Function;
+  setEditSetting: Function;
+  settings:() => void
 };
 
 type INexusProvider = {
@@ -40,6 +43,7 @@ const NexusProvider = ({ children }: INexusProvider) => {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
+  const [editSetting, setEditSetting] = useState(false);
   const profileModal = useRef<HTMLDivElement>();
   const [openModalAddGames, setOpenModalAddGames] = useState<boolean>(false);
 
@@ -100,6 +104,10 @@ const NexusProvider = ({ children }: INexusProvider) => {
     }
   }
 
+  const settings = () => setTimeout(() => {
+    setEditSetting((prev:boolean) => !prev)
+  }, 1000) 
+
   return (
     <NexusContext.Provider
       value={{
@@ -115,6 +123,9 @@ const NexusProvider = ({ children }: INexusProvider) => {
         openModalAddGames,
         setOpenModalAddGames,
         handleDeleteGame,
+        editSetting, 
+        setEditSetting,
+        settings
       }}
     >
       {" "}
