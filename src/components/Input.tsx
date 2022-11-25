@@ -13,12 +13,12 @@ interface IInputProps {
 
 export default function Input({ children, type, placeholder, name, register, style }: IInputProps) {
   return (
-    <label className={`${styles.inputBox} ${style}`}>
+    <label className={styles.inputBox}>
       {children}
       <input
         type={type}
         placeholder={placeholder}
-        className={styles.input}
+        className={`${styles.input} ${style}`}       
         {...register(name)}
       />
     </label>

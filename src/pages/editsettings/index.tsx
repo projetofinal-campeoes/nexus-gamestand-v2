@@ -1,6 +1,5 @@
 import { Avatar } from '@mui/material';
 import { getCookie } from 'cookies-next';
-import Link from 'next/link';
 import { FaUserEdit } from 'react-icons/fa';
 import BackgroundDashboard from '../../components/BackgroundDashboard';
 import GeralContainer from '../../components/GeralContainer';
@@ -15,7 +14,8 @@ import api from '../../services/api';
 
 const Settings = ({ user }: IProfile) => {
   const { editSetting, settings } = useNexus()
-    
+
+  
 
   const styleProfile = {
     width: 171,
@@ -40,16 +40,9 @@ const Settings = ({ user }: IProfile) => {
                 <h2 className='mt-2 font-inter text-title2 font-bold text-defaulttextdark'>
                   {user.username}
                 </h2>
-              </div>  
-                
-              {!editSetting && <Link href='/editsettings'>
-                <FaUserEdit color='white' size={31} style={{ margin: '36px', cursor: 'pointer' }}  />
-                </Link>}
-
+              </div>
             </section>
-
-              { editSetting ? <EditableSettings/> : <StaticSettings user={user}/>}
-
+             <EditableSettings/> 
           </main>
         </RightSide>
       </GeralContainer>

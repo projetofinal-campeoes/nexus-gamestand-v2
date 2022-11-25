@@ -12,6 +12,7 @@ import { errorToast, successToast } from "../services/toast";
 
 type IContext = {
   onSubmitRegister: (account: object) => void;
+  onSubmitUpdateUser: (account: object) => void;
   userModalOpen: boolean;
   editSetting: boolean;
   handleUserModalOpen: Function;
@@ -58,6 +59,19 @@ const NexusProvider = ({ children }: INexusProvider) => {
   };
 
   const navigate = useRouter();
+
+  const onSubmitUpdateUser = (account: FieldValues) => {
+    
+    api
+      .patch("/users", account)
+      .then((res) => {
+        successToast("Success Register!", 1000);       
+      })
+
+      .catch(({ response: { data: error } }) => {
+        errorToast(error.response.data.message, 2500);
+      });
+  };
 
   const onSubmitRegister = (account: FieldValues) => {
     delete account.confirmPassword;
@@ -111,6 +125,7 @@ const NexusProvider = ({ children }: INexusProvider) => {
   return (
     <NexusContext.Provider
       value={{
+        onSubmitUpdateUser,
         onSubmitRegister,
         userModalOpen,
         handleUserModalOpen,

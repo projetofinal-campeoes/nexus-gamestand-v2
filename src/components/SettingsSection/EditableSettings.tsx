@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { MdLock, MdMail, MdPerson } from 'react-icons/md';
 import { useNexus } from '../../context/NexusContext';
+import Input from '../Input';
 
-const EditableSettings = () => {
-  const { settings } = useNexus();
+const EditableSettings = () => { 
 
   /* const charEspecial = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/;
 
@@ -14,7 +16,7 @@ const EditableSettings = () => {
     bio: yup.string().required("Campo obrigatório"), 
     contact: yup.string().required("Campo obrigatório"),  
     course_module:yup.string().required("Escolha uma opção")        
-    }) */
+  }) */
 
   const {
     register,
@@ -27,71 +29,109 @@ const EditableSettings = () => {
   };
 
   return (
-    <section className='flex items-center justify-center p-[42px] w-[100%] h-[100%] gap-1'>
-      <div className='w-[50%] h-[100%]'>
-        <h2 className='mb-[25px] text-[22px] font-semibold text-defaulttextdark'>
-          {' '}
-          My Profile{' '}
-        </h2>
+    <section className='flex items-center justify-around p-[42px] w-[100%] h-[100%] gap-1'>
+      <form
+          action=""
+          className="flex flex-col items-center justify-center gap-4"
+          onSubmit={handleSubmit(onSubmited)}
+        >
+          <Input
+            type="text"
+            placeholder="username"
+            name="username"
+            register={register}
+            style='p-2'
+          >
+            <MdPerson color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="text"
+            placeholder="email"
+            name="email"
+            register={register}
+          >
+            <MdMail color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="text"
+            placeholder="imagem url"
+            name="avatar_url"
+            register={register}
+          >
+            <MdLock color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="password"
+            placeholder="password"
+            name="password"
+            register={register}
+          >
+            <MdLock color="E1E1E1" size={20} />
+          </Input>
+            <button
+              type='submit'       
+              className='w-[130px] h-[41px] text-defaulttextdark bg-primarycolor rounded-[8px]'
+            >
+              Save
+            </button>
+        </form>
 
-        <ul className='flex flex-wrap w-[100%] h-[100%] text-defaulttextdark'>
-          <li className='flex flex-col w-[50%] h-[20%] text-defaulttextdark'>
-            USERNAME
-            <span className='text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%] text-defaulttextdark'>
-            IMAGEM URL
-            <span className='text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%] text-defaulttextdark'>
-            EMAIL
-            <span className='text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%] text-defaulttextdark'>
-            PASSWORD
-            <span className='text-headline3 text-boxcolorlight'></span>
-          </li>
-        </ul>
-      </div>
-
-      <div className='w-[50%] h-[100%]'>
-        <h2 className='mb-[25px] text-[22px] font-semibold text-defaulttextdark'>
-          {' '}
-          My Library´s{' '}
-        </h2>
-
-        <ul className='flex flex-wrap w-[100%] h-[100%] text-defaulttextdark'>
-          <li className='flex flex-col w-[50%] h-[20%]'>
-            STEAM
-            <span className='p-2 text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%]'>
-            EPIC GAMES
-            <span className='p-2 text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%]'>
-            PLAYSTATION
-            <span className='p-2 text-headline3 text-boxcolorlight'></span>
-          </li>
-
-          <li className='flex flex-col w-[50%] h-[20%]'>
-            XBOX GAME PASS
-            <span className='p-2 text-headline3 text-boxcolorlight'></span>
-          </li>
-        </ul>
-      </div>
-      <button
-        type='button'
-        onClick={settings}
+                 
+        <form
+          action=""
+          className="flex flex-col items-center justify-center gap-4"
+          onSubmit={handleSubmit(onSubmited)}
+        >
+          <Input
+            type="text"
+            placeholder="steam"
+            name="steam"
+            register={register}
+            style='p-2'
+          >
+            <MdPerson color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="text"
+            placeholder="gamepass"
+            name="email"
+            register={register}
+          >
+            <MdMail color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="text"
+            placeholder="imagem url"
+            name="avatar_url"
+            register={register}
+          >
+            <MdLock color="E1E1E1" size={20} />
+          </Input>
+          <Input
+            type="password"
+            placeholder="password"
+            name="password"
+            register={register}
+          >
+            <MdLock color="E1E1E1" size={20} />
+          </Input>
+            <button
+              type='submit'       
+              className='w-[130px] h-[41px] text-defaulttextdark bg-primarycolor rounded-[8px]'
+            >
+              Save
+            </button>
+        </form>
+      
+     {/*  <Link href='/settings'>
+        <button
+        type='button'       
         className='w-[130px] h-[41px] text-defaulttextdark bg-primarycolor rounded-[8px]'
       >
         Save
       </button>
+      </Link> */}
+      
     </section>
   );
 };
